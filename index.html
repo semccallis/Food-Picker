@@ -160,7 +160,7 @@ async function loadPlaces(lat, lon, label) {
   }));
   const nameCount = {};
   places.forEach(p => { const k = norm(p.name); nameCount[k] = (nameCount[k] || 0) + 1; });
-  places.forEach(p => { p.chain = chainByList(p.name) || nameCount[norm(p.name)] > 1; });
+  places.forEach(p => { p.chain = chainByList(p.name) || nameCount[norm(p.name)] > 2; });
   filter = "All"; buildChips();
   status(places.length + " places within 5 miles of " + label + ".");
   $("pick").disabled = false;
