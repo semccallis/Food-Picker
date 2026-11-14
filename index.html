@@ -1,48 +1,248 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.65">
-  <style type="text/css">
-    body {background-color: #e5efea}
-    p.p2 {margin: 0.0px 0.0px 24.0px 0.0px; line-height: 25.5px; font: 17.0px Georgia; color: #3d5950; -webkit-text-stroke: #3d5950}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.5px; font: 12.0px 'Helvetica Neue'; color: #0f2520; -webkit-text-stroke: #0f2520; background-color: #ffffff}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 25.5px; font: 10.2px 'Helvetica Neue'; color: #3d5950; -webkit-text-stroke: #3d5950}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.5px; font: 10.8px 'Helvetica Neue'; color: #0f2520; -webkit-text-stroke: #0f2520}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.5px; font: 17.0px Georgia; color: #0f2520; -webkit-text-stroke: #0f2520; background-color: #e5efea; min-height: 20.0px}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 25.5px; font: 12.0px 'Helvetica Neue'; color: #0f2520; -webkit-text-stroke: #0f2520; background-color: #ffffff}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.5px; font: 11.0px 'Helvetica Neue'; color: #000000; -webkit-text-stroke: #000000; min-height: 13.0px}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.5px; font: 11.4px Times; color: #0f2520; -webkit-text-stroke: #0f2520}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.5px; font: 9.6px 'Helvetica Neue'; color: #3d5950; -webkit-text-stroke: #3d5950}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 25.5px; font: 13.8px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #ec3a6a}
-    p.p12 {margin: 0.0px 2.0px 0.0px 2.0px; line-height: 25.5px; font: 10.8px 'Helvetica Neue'; color: #3d5950; -webkit-text-stroke: #3d5950; min-height: 12.0px}
-    span.s1 {font-kerning: none; background-color: #e5efea}
-    span.s2 {font-kerning: none}
-    span.s3 {font-kerning: none; background-color: #ffffff}
-    span.s4 {font: 17.0px Georgia; font-kerning: none; color: #0f2520; background-color: #ffffff; -webkit-text-stroke: 0px #0f2520}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What should we eat?</title>
+<style>
+:root{--bg:#eaf2ee;--ink:#10302b;--muted:#4d6b63;--card:#fff;--accent:#f2547d;--accent-ink:#fff;--line:#b9d0c7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2420;--ink:#e6f3ee;--muted:#9bbab0;--card:#17332d;--accent:#ff7a9b;--accent-ink:#2a0a14;--line:#2f5248}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Georgia,"Times New Roman",serif;min-height:100vh;display:flex;justify-content:center;padding:24px 16px 48px}
+main{width:100%;max-width:520px}
+h1{font-size:clamp(2.4rem,9vw,3.4rem);line-height:1.02;margin:12px 0 8px;letter-spacing:-.02em}
+p.lead{color:var(--muted);margin:0 0 24px}
+.panel{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:18px}
+label{font:600 .9rem system-ui,sans-serif;display:block;margin-bottom:6px}
+.row{display:flex;gap:8px}
+input[type=text]{flex:1;min-width:0;font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+button{font:600 1rem system-ui,sans-serif;cursor:pointer;border-radius:12px;padding:12px 16px;border:2px solid var(--ink);background:var(--card);color:var(--ink)}
+button.go{background:var(--accent);color:var(--accent-ink);width:100%;font-size:1.15rem;padding:16px;margin-top:16px}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.or{text-align:center;color:var(--muted);font:.85rem system-ui,sans-serif;margin:12px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chips button{padding:6px 12px;font-size:.85rem;border-radius:99px;border-color:var(--line)}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.opts{margin-top:14px;font:.95rem system-ui,sans-serif;display:flex;align-items:center;gap:8px}
+.opts input{width:20px;height:20px;accent-color:var(--accent)}
+.sel{display:flex;gap:8px;margin-top:12px}
+.sel div{flex:1}
+select{width:100%;font:inherit;font-size:.95rem;padding:10px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+.note{font:.8rem system-ui,sans-serif;color:var(--muted);margin:6px 0 0}
+#resetHidden{display:none;margin-top:12px;padding:6px 12px;font-size:.85rem;border-color:var(--line)}
+.links button{font:600 .95rem system-ui,sans-serif;padding:10px 14px;border:2px solid var(--line);border-radius:12px;color:var(--muted)}
+#status{font:.9rem system-ui,sans-serif;color:var(--muted);margin:14px 2px 0;min-height:1.4em}
+#status.err{color:var(--accent)}
+#result{margin-top:22px;display:none}
+#result .pick{font-size:clamp(2rem,8vw,2.8rem);line-height:1.1;margin:0 0 8px;letter-spacing:-.01em}
+#result.spin .pick{color:var(--muted)}
+.meta{font:.95rem system-ui,sans-serif;color:var(--muted);margin:0 0 16px}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.links a{font:600 .95rem system-ui,sans-serif;color:var(--ink);padding:10px 14px;border:2px solid var(--ink);border-radius:12px;text-decoration:none;background:var(--card)}
+@media (prefers-reduced-motion:no-preference){#result:not(.spin) .pick{animation:pop .3s ease-out}}
+@keyframes pop{from{transform:scale(.96);opacity:.4}to{transform:none;opacity:1}}
+</style>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 8.0px 0.0px; line-height: 41.6px; font: 40.8px Georgia; color: #0f2520; -webkit-text-stroke: #0f2520"><span class="s1"><b>What should we eat?</b></span></h1>
-<p class="p2"><span class="s1">Pick a spot at random within 5 miles.</span></p>
-<p class="p3"><span class="s2"><b>Use my current location</b></span></p>
-<p class="p4"><span class="s3">or enter an address</span></p>
-<p class="p5"><span class="s3"><b>Address, city, or ZIP</b></span></p>
-<p class="p6"><span class="s2"></span><br></p>
-<p class="p7"><span class="s2"><b>Search</b></span></p>
-<p class="p8"><span class="s2"></span><br></p>
-<p class="p5"><span class="s3"><b>Open now only</b></span></p>
-<p class="p8"><span class="s2"></span><br></p>
-<p class="p5"><span class="s3"><b>Local only (hide chains)</b></span></p>
-<p class="p5"><span class="s3"><b>Price</b></span></p>
-<p class="p9"><span class="s1">Any price$ only$$ or less$$$ or less</span></p>
-<p class="p5"><span class="s3"><b>Rating</b></span></p>
-<p class="p9"><span class="s1">Any rating3.5 stars +4 stars +4.5 stars +</span></p>
-<p class="p10"><span class="s3">Places with no price info are still included in price filtering.</span></p>
-<p class="p11"><span class="s2"><b>Pick for me</b></span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
-<p class="p12"><span class="s2"></span><br></p>
+<main>
+<h1>What should we eat?</h1>
+<p class="lead">Pick a spot at random within 5 miles.</p>
+
+<section class="panel" aria-label="Search area">
+  <button id="loc" type="button" style="width:100%">Use my current location</button>
+  <div class="or">or enter an address</div>
+  <label for="addr">Address, city, or ZIP</label>
+  <div class="row">
+    <input id="addr" type="text" placeholder="123 Main St, Springfield" autocomplete="street-address">
+    <button id="find" type="button">Search</button>
+  </div>
+  <div class="opts"><input type="checkbox" id="openNow"><label for="openNow" style="margin:0">Open now only</label></div>
+  <div class="opts"><input type="checkbox" id="localOnly"><label for="localOnly" style="margin:0">Local only (hide chains)</label></div>
+  <div class="sel">
+    <div><label for="price">Price</label>
+      <select id="price"><option value="0">Any price</option><option value="1">$ only</option><option value="2">$$ or less</option><option value="3">$$$ or less</option></select></div>
+    <div><label for="rating">Rating</label>
+      <select id="rating"><option value="0">Any rating</option><option value="3.5">3.5 stars +</option><option value="4">4 stars +</option><option value="4.5">4.5 stars +</option></select></div>
+  </div>
+  <p class="note">Places with no price info are still included in price filtering.</p>
+  <button id="resetHidden" type="button"></button>
+  <div class="chips" id="chips" role="group" aria-label="Filter by type"></div>
+  <button class="go" id="pick" type="button" disabled>Pick for me</button>
+</section>
+
+<p id="status" role="status" aria-live="polite"></p>
+
+<section id="result" aria-live="polite">
+  <h2 class="pick" id="name"></h2>
+  <p class="meta" id="meta"></p>
+  <div class="links" id="links"></div>
+</section>
+</main>
+
+<script>
+// Netlify swaps this placeholder for your API_KEY variable during the build. Do not type your key here.
+const API_KEY = "__API_KEY__";
+
+const R = 8047; // 5 miles in meters
+const TYPE_GROUPS = [
+  ["restaurant"], ["fast_food_restaurant"], ["cafe"], ["pizza_restaurant"]
+];
+const FIELDS = "places.id,places.displayName,places.primaryTypeDisplayName,places.rating,places.userRatingCount,places.priceLevel,places.currentOpeningHours.openNow,places.location,places.googleMapsUri,places.websiteUri,places.businessStatus";
+const PRICE = {PRICE_LEVEL_INEXPENSIVE: "$", PRICE_LEVEL_MODERATE: "$$", PRICE_LEVEL_EXPENSIVE: "$$$", PRICE_LEVEL_VERY_EXPENSIVE: "$$$$"};
+const TIER = {PRICE_LEVEL_FREE: 0, PRICE_LEVEL_INEXPENSIVE: 1, PRICE_LEVEL_MODERATE: 2, PRICE_LEVEL_EXPENSIVE: 3, PRICE_LEVEL_VERY_EXPENSIVE: 4};
+// Chain names to filter out when "Local only" is on. Add more any time (lowercase, no apostrophes).
+const CHAINS = ["mcdonald","burger king","wendy","subway","taco bell","kfc","popeye","chick fil a","arby","sonic drive in","dairy queen","jack in the box","whataburger","five guys","culver","white castle","jimmy john","jersey mike","firehouse subs","panera","chipotle","qdoba","moes southwest","panda express","domino","pizza hut","papa john","little caesar","marco s pizza","marcos pizza","hungry howie","donatos","papa murphy","applebee","chili s","chilis","tgi friday","ruby tuesday","olive garden","red lobster","outback steakhouse","longhorn steakhouse","texas roadhouse","logan s roadhouse","logans roadhouse","cracker barrel","denny","ihop","waffle house","bob evans","perkins","golden corral","buffalo wild wings","hooters","red robin","bjs restaurant","cheesecake factory","bonefish grill","carrabba","buca di beppo","steak n shake","skyline chili","gold star chili","starbucks","dunkin","tim hortons","caribou coffee","wingstop","zaxby","raising cane","bojangles","el pollo loco","del taco","carl s jr","carls jr","hardee","krystal","freddy s","freddys","smashburger","shake shack","jason s deli","jasons deli","potbelly","noodles","fazoli","long john silver","captain d","charleys","auntie anne","cinnabon","krispy kreme","baskin robbins","cold stone","tropical smoothie","jamba","smoothie king","bruegger","einstein bro","friendly s","eat n park","max erma","chuck e cheese","dave busters","tilted kilt","miller s ale house","twin peaks","bar louie","famous dave","sbarro","fox s pizza","cici","mod pizza","blaze pizza","pieology","jet s pizza"];
+const norm = s => (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/['’`]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+const CHAIN_KEYS = CHAINS.map(c => " " + norm(c));
+const chainByList = n => { const t = " " + norm(n) + " "; return CHAIN_KEYS.some(k => t.includes(k)); };
+let hidden = new Set();
+try { hidden = new Set(JSON.parse(localStorage.getItem("hiddenPlaces") || "[]")); } catch (e) {}
+function updateReset() {
+  const b = document.getElementById("resetHidden");
+  b.style.display = hidden.size ? "inline-block" : "none";
+  b.textContent = "Show hidden places again (" + hidden.size + ")";
+}
+function saveHidden() {
+  try { localStorage.setItem("hiddenPlaces", JSON.stringify([...hidden])); } catch (e) {}
+  updateReset();
+}
+
+let places = [], filter = "All", last = null, busy = false;
+const $ = id => document.getElementById(id);
+const status = (t, err) => { $("status").textContent = t; $("status").className = err ? "err" : ""; };
+
+function miles(a, b, c, d) {
+  const r = x => x * Math.PI / 180, dLa = r(c - a), dLo = r(d - b);
+  const h = Math.sin(dLa/2)**2 + Math.cos(r(a))*Math.cos(r(c))*Math.sin(dLo/2)**2;
+  return 2 * 6371000 * Math.asin(Math.sqrt(h)) / 1609.34;
+}
+
+async function gfetch(path, body, mask) {
+  const res = await fetch("https://places.googleapis.com/v1/" + path, {
+    method: "POST",
+    headers: {"Content-Type": "application/json", "X-Goog-Api-Key": API_KEY, "X-Goog-FieldMask": mask},
+    body: JSON.stringify(body)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error?.message || res.status);
+  return data;
+}
+
+function keyOk() {
+  if (API_KEY.startsWith("__") || !API_KEY) {
+    status("The API key wasn't added during the Netlify build. Check the build settings.", true);
+    return false;
+  }
+  return true;
+}
+
+async function loadPlaces(lat, lon, label) {
+  places = []; $("pick").disabled = true;
+  status("Looking for places nearby…");
+  const circle = {circle: {center: {latitude: lat, longitude: lon}, radius: R}};
+  const jobs = TYPE_GROUPS.map(t => gfetch("places:searchNearby", {includedTypes: t, maxResultCount: 20, locationRestriction: circle}, FIELDS));
+  const out = await Promise.allSettled(jobs);
+  const seen = new Map();
+  out.forEach(o => o.status === "fulfilled" && (o.value.places || []).forEach(p => seen.set(p.id, p)));
+  if (!seen.size) {
+    const bad = out.find(o => o.status === "rejected");
+    status(bad ? "Google returned an error: " + bad.reason.message : "No places found within 5 miles of " + label + ".", true);
+    return;
+  }
+  places = [...seen.values()].filter(p => p.businessStatus !== "CLOSED_PERMANENTLY" && p.businessStatus !== "CLOSED_TEMPORARILY").map(p => ({
+    id: p.id, name: p.displayName?.text || "Unnamed place",
+    cuisine: p.primaryTypeDisplayName?.text || "Restaurant",
+    rating: p.rating, count: p.userRatingCount,
+    price: PRICE[p.priceLevel], tier: TIER[p.priceLevel], open: p.currentOpeningHours?.openNow,
+    url: p.googleMapsUri, site: p.websiteUri,
+    mi: miles(lat, lon, p.location.latitude, p.location.longitude)
+  }));
+  const nameCount = {};
+  places.forEach(p => { const k = norm(p.name); nameCount[k] = (nameCount[k] || 0) + 1; });
+  places.forEach(p => { p.chain = chainByList(p.name) || nameCount[norm(p.name)] > 1; });
+  filter = "All"; buildChips();
+  status(places.length + " places within 5 miles of " + label + ".");
+  $("pick").disabled = false;
+}
+
+function buildChips() {
+  const counts = {};
+  places.forEach(p => counts[p.cuisine] = (counts[p.cuisine] || 0) + 1);
+  const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 9).map(x => x[0]);
+  const box = $("chips"); box.innerHTML = "";
+  ["All", ...top].forEach(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = c; b.setAttribute("aria-pressed", c === filter);
+    b.onclick = () => { filter = c; buildChips(); };
+    box.appendChild(b);
+  });
+}
+
+function show(p) {
+  $("name").textContent = p.name;
+  const bits = [p.cuisine];
+  if (p.rating) bits.push("★ " + p.rating.toFixed(1) + (p.count ? " (" + p.count + ")" : ""));
+  if (p.price) bits.push(p.price);
+  bits.push(p.mi.toFixed(1) + " mi away");
+  if (p.open === true) bits.push("Open now"); else if (p.open === false) bits.push("Closed now");
+  $("meta").textContent = bits.join(" · ");
+  $("links").innerHTML = "";
+  const add = (t, h) => { const a = document.createElement("a"); a.textContent = t; a.href = h; a.target = "_blank"; a.rel = "noopener"; $("links").appendChild(a); };
+  if (p.url) add("Open in Google Maps", p.url);
+  if (p.site && /^https?:\/\//.test(p.site)) add("Website", p.site);
+  const nb = document.createElement("button");
+  nb.type = "button"; nb.textContent = "Never show again";
+  nb.onclick = () => { hidden.add(p.id); saveHidden(); $("pick").click(); };
+  $("links").appendChild(nb);
+}
+
+$("pick").onclick = async () => {
+  if (busy) return;
+  const onlyOpen = $("openNow").checked;
+  const onlyLocal = $("localOnly").checked;
+  const maxTier = +$("price").value, minRating = +$("rating").value;
+  const pool = places.filter(p => !hidden.has(p.id) && (filter === "All" || p.cuisine === filter) && (!onlyOpen || p.open === true) && (!onlyLocal || !p.chain)
+    && (!maxTier || p.tier == null || p.tier <= maxTier) && (!minRating || (p.rating || 0) >= minRating));
+  if (!pool.length) return status("Nothing matches those filters. Try turning one off.", true);
+  status("");
+  busy = true; $("pick").disabled = true;
+  $("result").style.display = "block"; $("result").classList.add("spin");
+  $("links").innerHTML = ""; $("meta").textContent = "";
+  const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  if (!reduce) for (let i = 0; i < 14; i++) { $("name").textContent = pool[Math.floor(Math.random() * pool.length)].name; await new Promise(r => setTimeout(r, 60 + i * 12)); }
+  let p; do { p = pool[Math.floor(Math.random() * pool.length)]; } while (pool.length > 1 && p === last);
+  last = p; $("result").classList.remove("spin"); show(p);
+  busy = false; $("pick").disabled = false; $("pick").textContent = "Pick again";
+};
+
+$("loc").onclick = () => {
+  if (!keyOk()) return;
+  if (!navigator.geolocation) return status("Location isn't available in this browser. Enter an address instead.", true);
+  status("Getting your location…");
+  navigator.geolocation.getCurrentPosition(
+    pos => loadPlaces(pos.coords.latitude, pos.coords.longitude, "you"),
+    () => status("Couldn't get your location. Allow access, or enter an address instead.", true),
+    {timeout: 10000}
+  );
+};
+
+async function search() {
+  if (!keyOk()) return;
+  const q = $("addr").value.trim();
+  if (!q) return status("Enter an address, city, or ZIP first.", true);
+  status("Finding that address…");
+  try {
+    const d = await gfetch("places:searchText", {textQuery: q, maxResultCount: 1}, "places.location,places.formattedAddress");
+    const hit = d.places && d.places[0];
+    if (!hit) return status("Couldn't find that address. Try adding a city or state.", true);
+    loadPlaces(hit.location.latitude, hit.location.longitude, hit.formattedAddress.split(",").slice(0, 2).join(","));
+  } catch (e) { status("Address lookup failed: " + e.message, true); }
+}
+$("find").onclick = search;
+$("addr").addEventListener("keydown", e => { if (e.key === "Enter") search(); });
+$("resetHidden").onclick = () => { hidden.clear(); saveHidden(); status("Hidden places are back in the mix."); };
+updateReset();
+</script>
 </body>
 </html>
